@@ -11,7 +11,7 @@ export async function getNewPosts() {
     writeTimestamp();
     return {
         blog,
-        posts: posts.filter(post => post.timestamp > lastTimestamp)
+        posts: posts.filter(post => post.timestamp * 1000 > lastTimestamp).sort((a, b) => a.timestamp - b.timestamp)
     };
 }
 
