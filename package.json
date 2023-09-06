@@ -16,6 +16,7 @@
     "tumblr.js": "^4.0.1"
   },
   "devDependencies": {
+    "dotenv": "^16.3.1",
     "minify": "^9.2.0",
     "typescript": "^5.2.2"
   }
