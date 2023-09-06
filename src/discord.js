@@ -24,6 +24,9 @@ function createPostEmbed(blog, post, url) {
 }
 
 export async function repost(blog, post, imageUrls) {
+    if (!imageUrls.length) {
+        return;
+    }
     await rest.post(Routes.webhook(process.env.DISCORD_WEBHOOK_ID, process.env.DISCORD_WEBHOOK_TOKEN), {
         auth: false,
         body: {
