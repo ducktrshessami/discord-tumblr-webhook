@@ -1,11 +1,18 @@
 import { Client } from "tumblr.js";
 import { JSDOM } from "jsdom";
 import { POST_LIMIT } from "./constants.js";
+import { getLastTimestamp, writeTimestamp } from "./config.js";
 
 const client = new Client({ consumer_key: process.env.TUMBLR_KEY });
 
 export async function getNewPosts() {
-    return await client.blogPosts(process.env.TARGET_BLOG, { limit: POST_LIMIT });
+    const lastTimestamp = getLastTimestamp();
+    const { blog, posts } = await client.blogPosts(process.env.TARGET_BLOG, { limit: POST_LIMIT });
+    writeTimestamp();
+    return {
+        blog,
+        posts: posts.filter(post => post.timestamp > lastTimestamp)
+    };
 }
 
 export function getPostImageURLs(post) {
