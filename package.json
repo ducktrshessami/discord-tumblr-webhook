@@ -9,6 +9,7 @@
   "license": "MIT",
   "dependencies": {
     "@discordjs/rest": "^2.0.1",
+    "jsdom": "^22.1.0",
     "tumblr.js": "^4.0.1"
   },
   "devDependencies": {
