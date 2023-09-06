@@ -8,6 +8,7 @@
   "author": "ducktrshessami",
   "license": "MIT",
   "dependencies": {
+    "@discordjs/rest": "^2.0.1",
     "tumblr.js": "^4.0.1"
   },
   "devDependencies": {
