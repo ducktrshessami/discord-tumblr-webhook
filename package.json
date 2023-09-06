@@ -1,6 +1,6 @@
 {
   "name": "discord-tumblr-webhook",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Reposts from a Tumblr blog to Discord",
   "type": "module",
   "main": "src/index.js",
