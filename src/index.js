@@ -28,7 +28,7 @@ async function queuedPosts(blog, posts) {
 }
 
 try {
-    console.log("Fetching posts...");
+    console.log(`Fetching posts for blog: ${process.env.TARGET_BLOG}`);
     const { blog, posts } = await getNewPosts();
     await queuedPosts(blog, posts);
     console.log("Done!");
