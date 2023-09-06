@@ -1,4 +1,4 @@
-import dotenv from "./dotenv.js";
+import dotenv from "./dotenv";
 
 await dotenv();
 
