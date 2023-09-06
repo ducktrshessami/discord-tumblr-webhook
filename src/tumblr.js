@@ -16,7 +16,13 @@ export async function getNewPosts() {
 }
 
 export function getPostImageURLs(post) {
-    const dom = new JSDOM(post.body);
-    const images = dom.window.document.querySelectorAll("img");
-    return Array.from(images.values()).map(image => image.src);
+    if (post.type === "photo") {
+        return post.photos.map(photo => photo.original_size.url);
+    }
+    else if (post.body) {
+        const dom = new JSDOM(post.body);
+        const images = dom.window.document.querySelectorAll("img");
+        return Array.from(images.values()).map(image => image.src);
+    }
+    return [];
 }
