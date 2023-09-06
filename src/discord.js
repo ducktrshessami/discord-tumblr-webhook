@@ -13,7 +13,7 @@ function createPostEmbed(blog, post, url) {
     return {
         description: post.summary,
         url: post.post_url,
-        timestamp: new Date(post.timestamp).toISOString(),
+        timestamp: new Date(post.timestamp * 1000).toISOString(),
         color: resolveColor(blog.theme.background_color),
         image: { url },
         author: {
