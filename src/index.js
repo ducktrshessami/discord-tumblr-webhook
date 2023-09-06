@@ -13,6 +13,7 @@ async function queuedPosts(blog, posts) {
             const post = posts[i];
             const imageUrls = getPostImageURLs(post);
             if (!imageUrls.length) {
+                console.log(`Could not find image urls. Skipping ${post.post_url}`);
                 continue;
             }
             await repost(blog, post, imageUrls);
