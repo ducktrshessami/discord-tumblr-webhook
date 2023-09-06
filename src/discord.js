@@ -27,6 +27,7 @@ export async function repost(blog, post, imageUrls) {
     if (!imageUrls.length) {
         return;
     }
+    console.log(`Reposting: ${post.post_url}`);
     await rest.post(Routes.webhook(process.env.DISCORD_WEBHOOK_ID, process.env.DISCORD_WEBHOOK_TOKEN), {
         auth: false,
         body: {

@@ -27,8 +27,10 @@ async function queuedPosts(blog, posts) {
 }
 
 try {
+    console.log("Fetching posts...");
     const { blog, posts } = await getNewPosts();
     await queuedPosts(blog, posts);
+    console.log("Done!");
 }
 catch (err) {
     console.error(err);
