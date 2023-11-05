@@ -7,14 +7,18 @@ import { fileURLToPath } from "url";
 
 const path = fileURLToPath(new URL("../config.json", import.meta.url));
 
+function resolveNaNTimestamp(timestamp) {
+    return new Date(isNaN(timestamp) ? Date.now() : timestamp);
+}
+
 export function getConfig() {
     try {
         if (existsSync(path)) {
             const config = JSON.parse(readFileSync(path, { encoding: "utf8" }));
             return {
-                lastChecked: new Date(config.last_checked).getTime(),
+                lastChecked: resolveNaNTimestamp(config.last_checked).getTime(),
                 pastOffset: config.past_offset,
-                pastTime: new Date(config.past_time).getTime()
+                pastTime: resolveNaNTimestamp(config.past_time).getTime()
             };
         }
     }
@@ -31,8 +35,8 @@ export function getConfig() {
 }
 
 export function writeConfig({ lastChecked, pastOffset, pastTime } = {}) {
-    lastChecked ??= new Date();
+    lastChecked = resolveNaNTimestamp(lastChecked);
     pastOffset ??= 0;
-    pastTime ??= new Date();
+    pastTime = resolveNaNTimestamp(pastTime);
     writeFileSync(path, `{ "last_checked": "${lastChecked.toISOString()}", "past_offset": ${pastOffset}, "past_time": "${pastTime.toISOString()}" }\n`, { encoding: "utf8" });
 }
