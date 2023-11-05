@@ -34,5 +34,5 @@ export function writeConfig({ lastChecked, pastOffset, pastTime } = {}) {
     lastChecked ??= new Date();
     pastOffset ??= 0;
     pastTime ??= new Date();
-    writeFileSync(path, `{ "last_checked": "${lastChecked.toISOString()}", "past_offset": ${pastOffset}, "past_time": "${pastTime}" }\n`, { encoding: "utf8" });
+    writeFileSync(path, `{ "last_checked": "${lastChecked.toISOString()}", "past_offset": ${pastOffset}, "past_time": "${pastTime.toISOString()}" }\n`, { encoding: "utf8" });
 }
