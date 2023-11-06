@@ -8,7 +8,8 @@ import { fileURLToPath } from "url";
 const path = fileURLToPath(new URL("../config.json", import.meta.url));
 
 function resolveNaNTimestamp(timestamp) {
-    return new Date(isNaN(timestamp) ? Date.now() : timestamp);
+    const date = new Date(timestamp);
+    return isNaN(date.getTime()) ? new Date() : date;
 }
 
 export function getConfig() {
