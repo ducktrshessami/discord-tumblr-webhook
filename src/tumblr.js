@@ -15,7 +15,6 @@ export async function getNewPosts() {
             limit: POST_LIMIT,
             offset: config.pastOffset
         });
-        console.log(oldPosts[0])
         const [filteredPosts, filterCount] = oldPosts.reduce((data, post) => {
             if (post.timestamp * 1000 < config.pastTime) {
                 data[0].push(post);
@@ -23,7 +22,6 @@ export async function getNewPosts() {
             else {
                 data[1]++;
             }
-            console.log(data, config.pastTime);
             return data;
         }, [[], 0]);
         posts = filteredPosts.sort((a, b) => b.timestamp - a.timestamp).slice(0, 1);
