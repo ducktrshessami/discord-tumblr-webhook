@@ -18,7 +18,7 @@ export function getConfig() {
             const config = JSON.parse(readFileSync(path, { encoding: "utf8" }));
             return {
                 lastChecked: resolveNaNTimestamp(config.last_checked).getTime(),
-                pastOffset: config.past_offset,
+                pastOffset: config.past_offset ?? 0,
                 pastTime: resolveNaNTimestamp(config.past_time).getTime()
             };
         }
