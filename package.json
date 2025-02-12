@@ -8,11 +8,11 @@
   "author": "ducktrshessami",
   "license": "MIT",
   "dependencies": {
-    "@discordjs/rest": "^2.3.0",
-    "jsdom": "^24.1.0",
+    "@discordjs/rest": "^2.4.3",
+    "jsdom": "^26.0.0",
     "tumblr.js": "^5.0.0"
   },
   "devDependencies": {
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.7"
   }
 }
